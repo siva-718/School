@@ -1,0 +1,42 @@
+.my_footer{
+    background-image:url('{% static "img/footbg.jpg" %}')
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height:60px;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
+.my_footer p{
+text-align:center;
+font-size:13px;
+padding-top:20px;
+}
+
+/*Dropdown*/
+ .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style for the dropdown content */
+        .dropdown-item a{
+            display: none;
+            position: absolute;
+            background-color:red;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+            z-index: 1;
+        }
+ .my_footer{
+background-color:silver;
+height:60px;
+}
+.my_footer p{
+text-align:center;
+font-size:13px;
+padding-top:20px;
+}

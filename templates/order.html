@@ -1,0 +1,11 @@
+{% block body %}
+<form method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <h2>You Can Order Here</h2><br>
+{{ form.as_p }}
+    <input type="submit" class="btn btn-primary"  value="Place Order">
+    <a href="/" name="cancel" class="btn btn-warning">Cancel</a>
+</form>
+
+
+{% endblock %}
