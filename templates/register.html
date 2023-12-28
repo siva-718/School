@@ -69,13 +69,16 @@
 
 <div class="register-container">
     <h2>Register</h2>
-    <form class="register-form" method="POST" action="{% url 'registration:register' %}" >
+    <form class="register-form" method="POST" action="" >
         {% csrf_token %}
         <input type="text" name="username" placeholder="Enter username" required><br>
         <input type="password" name="password" placeholder="Enter password" required><br>
         <input type="password" name="password2" placeholder="Confirm password" required><br>
         <button type="submit">Register</button>
     </form>
+    {% for msg in messages %}
+<h2 style="text-align:center;color:black;">{{msg}}</h2>
+{% endfor %}
     <p>Already have an account? <a href="{% url 'registration:login' %}">Login</a></p>
 </div>
 

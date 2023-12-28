@@ -66,12 +66,15 @@
 <body>
 <div class="login-container">
     <h2>Login</h2>
-    <form class="login-form" action="POST">
+    <form class="login-form" method="POST" action="{% url 'registration:dashboard' %}" >
         {% csrf_token %}
         <input type="text" placeholder="Username" required>
         <input type="password" placeholder="Password" required>
         <button type="submit">Login</button>
     </form>
+    {% for msg in messages %}
+<h2 style="color:black;">{{msg}}</h2>
+{% endfor %}
     <p>Don't have an account? <a href="{% url 'registration:register' %}">Register</a></p>
 </div>
 </body>

@@ -14,12 +14,22 @@ class Course(models.Model):
 
 class Material(models.Model):
     name = models.CharField(max_length=255)
+    def __str__(self):
+        return self.name
+# class Purpose(models.Model):
+#     purpose=models.CharField(max_length=250)
+#     def __str__(self):
+#         return self.purpose
 
 class Order(models.Model):
+    GENDER_CHOICES=[
+        ('Male','Male'),
+        ('Female','Female'),
+    ]
     name = models.CharField(max_length=255)
     dob = models.DateField()
     age = models.IntegerField()
-    gender = models.CharField(max_length=10)
+    gender = models.CharField(max_length=10,choices=GENDER_CHOICES)
     phone_number = models.CharField(max_length=15)
     email = models.EmailField()
     address = models.TextField()

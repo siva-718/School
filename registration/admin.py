@@ -8,5 +8,12 @@ admin.site.register(Department,DepartmentAdmin)
 
 class CourseAdmin(admin.ModelAdmin):
     list_display = ['name','department']
-    list_editable = ['department']
 admin.site.register(Course,CourseAdmin)
+
+# class PurposeAdmin(admin.ModelAdmin):
+#     list_display = ['purpose']
+# admin.site.register(Purpose,PurposeAdmin)
+
+class MaterialAdmin(admin.ModelAdmin):
+    list_display = ['name']
+admin.site.register(Material,MaterialAdmin)

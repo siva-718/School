@@ -4,9 +4,11 @@ from django.shortcuts import render, redirect
 from .models import Material,Department,Order,Course
 from .forms import OrderForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
-
-
+@login_required(login_url='registration:login')
+def dashboard(request):
+    return render(request, 'dashboard.html')
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -20,12 +22,7 @@ def register(request):
             else:
                 user = User.objects.create_user(username=username, password=password)
                 user.save()
-
-                # Authenticate and login the user after registration
-                authenticate_user = authenticate(request, username=username, password=password)
-                login(request, authenticate_user)
-
-                messages.success(request, "Registration successful. You are now logged in.")
+                messages.success(request, "Registration successful. Please log in.")
                 return redirect('registration:login')
         else:
             messages.info(request, "Password not matching")
@@ -41,13 +38,14 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('/')  # Redirect to the dashboard page after login
+            return redirect('registration:dashboard')  # Redirect to the dashboard page after login
         else:
             messages.info(request, 'Invalid Username/Password')
-            return redirect('login')
+            return redirect('registration:login')
 
     return render(request, 'login.html')
 def order(request):
+    departments = Department.objects.all()
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -56,4 +54,4 @@ def order(request):
     else:
         form = OrderForm()
 
-    return render(request, 'order.html', {'form': form})
+    return render(request, 'order.html', {'form': form, 'departments': departments})
