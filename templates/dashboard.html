@@ -1,0 +1,14 @@
+{% load static %}
+<style>
+    .center-btn{
+    text-align: center;
+    margin-top: 20px;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+<h2 style="text-align:center;">Welcome to Your Dashboard!</h2>
+<p style="text-align:center;">This is a protected page accessible only to logged-in users.</p>
+<div class="center-btn">
+    <a class="btn btn-primary" href="{% url 'registration:order' %}">ORDER</a>
+</div>
+
